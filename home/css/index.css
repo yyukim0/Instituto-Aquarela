@@ -70,24 +70,17 @@ img {
     object-fit: cover;
 }
 
-.end-page {
-    width: min(100% - 40px, 1120px);
-    margin: clamp(48px, 7vw, 80px) auto 0;
-    font-family: "Bricolage Grotesque", sans-serif;
-    color: #f19c03;
-}
-
 .end-page h2 {
-    margin: 0 0 clamp(20px, 3vw, 30px);
-    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    margin: 0 0 20px;
+    font-size: clamp(2.2rem, 3.5vw, 2.8rem); 
     font-weight: 700;
 }
 
 .end-page p {
-    margin: 0 0 clamp(18px, 2.5vw, 25px);
-    font-size: clamp(1.125rem, 2.4vw, 1.875rem);
+    margin: 0 0 18px;
+    font-size: clamp(1.15rem, 1.9vw, 1.5rem); 
     font-weight: 500;
-    line-height: 1.5;
+    line-height: 1.45;
 }
 
 .end-page p.propósito {
@@ -108,7 +101,7 @@ img {
 
 .footer {
     width: 100%;
-    margin-top: clamp(48px, 7vw, 80px);
+    margin-top: 0;
     padding: 12px clamp(20px, 4vw, 50px) 12px; 
     background-color: #f19c03;
     color: white;
@@ -210,10 +203,6 @@ img {
         font-size: 0.95rem;
     }
 
-    .end-page {
-        width: min(100% - 32px, 1120px);
-    }
-
     .footer-top {
         flex-direction: column;
         align-items: flex-start;
@@ -236,6 +225,56 @@ img {
     .social-icons {
         gap: 16px;
     }
+}
+
+.sobre-nos-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden; 
+}
+
+.end-page {
+    position: relative;
+    z-index: 2; 
+    
+    width: min(100% - 40px, 880px);
+    margin: 180px auto 520px;
+    font-family: "Bricolage Grotesque", sans-serif;
+    color: #f19c03;
+}
+
+.bg-shape {
+    position: absolute;
+    pointer-events: none; 
+    z-index: 1;
+    opacity: 0.25;
+}
+
+.shape-left {
+    top: -400px;
+    left: -100px;
+    height: 1500px;
+    transform: translateX(-50%) rotate(90deg);
+}
+
+.shape-flower {
+    top: -15%;
+    right: -450px;
+    width: 900px;
+}
+
+.shape-star {
+    bottom: 18%;
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 200px;
+}
+
+.shape-bottom {
+    bottom: -1250px;
+    left: 960px;
+    width: 100%;
+    transform: translateX(-50%) rotate(90deg);
 }
 
 
@@ -280,8 +319,6 @@ img {
 .sidebar-menu.open {
     transform: translateX(0);
 }
-
-
 
 .sidebar-content {
     margin-top: 40px;
