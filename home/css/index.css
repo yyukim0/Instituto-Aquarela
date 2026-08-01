@@ -24,6 +24,9 @@ img {
     padding: 16px clamp(20px, 4vw, 70px);
     border: 2px solid #f19c03;
     background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .image-header {
@@ -31,6 +34,13 @@ img {
     height: clamp(70px, 9vw, 120px);
     margin-right: auto;
     object-fit: contain;
+    transition: transform 0.2s ease;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.image-header:hover {
+    transform: scale(1.1);
 }
 
 .image-dropdown {
@@ -47,6 +57,13 @@ img {
     font-size: clamp(1rem, 1.5vw, 1.25rem);
     font-weight: 500;
     white-space: nowrap;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.3s ease;
+    display: inline-block;
+}
+
+.text-header:hover {
+    transform: scale(1.1);
 }
 
 .carousel {
@@ -201,6 +218,7 @@ img {
         flex: 1 1 25%;
         text-align: center;
         font-size: 0.95rem;
+
     }
 
     .footer-top {
@@ -220,6 +238,7 @@ img {
 
     .text-header {
         flex-basis: 100%;
+
     }
 
     .social-icons {
@@ -359,4 +378,20 @@ img {
 
 .sidebar-content a:hover {
     opacity: 0.7; 
+}
+
+/* PROJETOS */
+
+.projetos-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden; 
+}
+
+.div-projetos {
+    position: relative;
+    z-index: 2; 
+    
+    width: min(100% - 40px, 880px);
+    margin: 180px auto 520px;
 }
