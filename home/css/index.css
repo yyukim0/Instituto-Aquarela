@@ -309,7 +309,7 @@ img {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 99;
+    z-index: 2000; 
 }
 
 .menu-overlay.open {
@@ -332,7 +332,8 @@ img {
     
     transform: translateX(100%);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 100;
+    z-index: 2001;
+    overflow: hidden;
 }
 
 .sidebar-menu.open {
@@ -378,6 +379,39 @@ img {
 
 .sidebar-content a:hover {
     opacity: 0.7; 
+}
+
+.shape-left-sidebar {
+    top: 58%;
+    left: -3%;
+    height: 40%;
+    transform: translateX(-50%) rotate(90deg);
+}
+
+.shape-flower-sidebar {
+    top: 62%;
+    right: -30%;
+    width: 55%;
+}
+
+.shape-star-sidebar {
+    bottom: 7%;
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 30%;
+}
+
+.shape-bottom-sidebar {
+    bottom: -30%;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%) rotate(90deg);
+}
+
+.shape-yellow-sidebar {
+    bottom: 32%;
+    left: 41%;
+    width: 60%;
 }
 
 /* PROJETOS */
