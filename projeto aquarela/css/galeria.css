@@ -4,13 +4,33 @@
 
 html {
   scroll-behavior: smooth;
+  /* Barra de rolagem: trilho transparente, barra laranja */
+  scrollbar-width: thin;
+  scrollbar-color: #f19c03 transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #f19c03;
+  border-radius: 10px;
 }
 
 body {
   margin: 0;
+  min-width: 320px;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  font-family: "Bricolage Grotesque", sans-serif;
 }
 
 img {
@@ -24,12 +44,14 @@ img {
   text-decoration: none;
 }
 
+/* ========================= HEADER ========================= */
+
 .header {
   display: flex;
   align-items: center;
-  gap: clamp(16px, 3vw, 56px);
-  min-height: 160px;
-  padding: 16px clamp(20px, 4vw, 70px);
+  gap: clamp(14px, 3vw, 56px);
+  min-height: clamp(80px, 12vw, 160px);
+  padding: 12px clamp(16px, 4vw, 70px);
   border: 2px solid #f19c03;
   background-color: white;
   position: sticky;
@@ -39,7 +61,7 @@ img {
 
 .image-header {
   width: auto;
-  height: clamp(70px, 9vw, 120px);
+  height: clamp(55px, 9vw, 120px);
   margin-right: auto;
   object-fit: contain;
   transition: transform 0.2s ease;
@@ -53,7 +75,7 @@ img {
 
 .image-dropdown {
   width: auto;
-  height: clamp(34px, 4vw, 50px);
+  height: clamp(32px, 4vw, 50px);
   margin-left: auto;
   object-fit: contain;
   cursor: pointer;
@@ -61,8 +83,7 @@ img {
 
 .text-header {
   color: #5971cf;
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-size: clamp(0.95rem, 1.5vw, 1.25rem);
   font-weight: 500;
   white-space: nowrap;
   text-decoration: none;
@@ -74,14 +95,11 @@ img {
   transform: scale(1.1);
 }
 
-/* PARTE DO DRAWER */
+/* ========================= DRAWER ========================= */
 
 .menu-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.3);
   opacity: 0;
   visibility: hidden;
@@ -99,14 +117,13 @@ img {
   top: 0;
   right: 0;
   width: 25%;
+  min-width: 280px;
   height: 100vh;
+  height: 100dvh;
   background-color: white;
-
   border: 3px solid #f19c03;
   border-left: 6px double #f19c03;
-
   padding: 20px 24px;
-
   transform: translateX(100%);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 2001;
@@ -118,6 +135,8 @@ img {
 }
 
 .sidebar-content {
+  position: relative;
+  z-index: 2;
   margin-top: 40px;
 }
 
@@ -155,10 +174,11 @@ img {
 }
 
 .sidebar-content a {
+  display: inline-block;
+  padding: 4px 0;
   text-decoration: none;
   color: #f19c03;
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-size: 30px;
+  font-size: clamp(22px, 2vw, 30px);
   font-weight: 600;
   letter-spacing: 1px;
   transition: opacity 0.5s ease;
@@ -208,48 +228,71 @@ img {
   opacity: 0.25;
 }
 
-/* BODY */
+/* ========================= FRASE ========================= */
 
 .phrase-container {
   flex: 1;
   display: flex;
   justify-content: center;
-
-  padding-top: 2%;
-  padding-inline: 20px;
+  padding: clamp(20px, 3vw, 40px) 20px;
   text-align: center;
-  padding-bottom: 2%;
 }
 
 #phrase {
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(1.6rem, 4vw, 3.5rem);
   color: #f19c03;
   font-weight: 700;
+  line-height: 1.2;
+  max-width: 20ch; /* quebra a frase de forma elegante em telas estreitas */
 }
 
-/* PARTE DO PDF */
+@media (min-width: 761px) {
+  #phrase {
+    max-width: none;
+  }
+}
+
+/* ========================= PDF ========================= */
 
 .PDF-container {
-  justify-content: center;
   display: flex;
-  padding-bottom: 5%;
+  justify-content: center;
+  padding: 0 clamp(12px, 3vw, 20px) clamp(30px, 5vw, 60px);
+}
+
+.PDF-container > div {
+  width: 100%;
+  max-width: 900px;
 }
 
 .PDF {
-  width: 900px;
-  height: 1100px;
+  display: block;
+  width: 100%;
+  aspect-ratio: 900 / 1100; /* mantém a proporção original em qualquer largura */
+  border: 0;
 }
 
-/*FOOTER */
+/* Link de apoio: muitos celulares não mostram o PDF dentro do iframe */
+.pdf-link {
+  display: none;
+  margin-top: 14px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background-color: #f19c03;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* ========================= FOOTER ========================= */
 
 .footer {
   width: 100%;
   margin-top: 0;
-  padding: 12px clamp(20px, 4vw, 50px) 12px;
+  padding: 12px clamp(20px, 4vw, 50px);
   background-color: #f19c03;
   color: white;
-  font-family: "Bricolage Grotesque", sans-serif;
 }
 
 .footer-top {
@@ -265,7 +308,6 @@ img {
   display: flex;
   flex-direction: column;
   gap: 4px;
-
   margin-top: 10px;
 }
 
@@ -273,25 +315,20 @@ img {
   margin: 0;
 }
 
-.footer-contact .email {
-  font-size: clamp(1.1rem, 2vw, 1.5rem);
-  font-weight: 300;
-  line-height: 1.2;
-  margin: 0;
-}
-
+.footer-contact .email,
 .footer-contact .address {
   max-width: none;
-  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-size: clamp(1rem, 2vw, 1.5rem);
   font-weight: 300;
   line-height: 1.2;
   margin: 0;
+  overflow-wrap: anywhere;
 }
 
 .logo-footer {
   display: block;
   width: auto;
-  height: clamp(200px, 14vw, 170px);
+  height: clamp(90px, 14vw, 200px);
   object-fit: contain;
 }
 
@@ -322,4 +359,140 @@ img {
 
 .social-link:hover {
   transform: scale(1.15);
+}
+
+/* ========================= RESPONSIVIDADE ========================= */
+
+@media (max-width: 760px) {
+  .header {
+    min-height: 70px;
+    padding: 8px 16px;
+  }
+
+  .text-header {
+    display: none; /* o menu (drawer) já tem esses links */
+  }
+
+  .image-header {
+    height: 50px;
+  }
+
+  .image-dropdown {
+    height: 34px;
+  }
+
+  /* Drawer no celular: mais estreito e com textos menores,
+     para manter as formas decorativas na mesma disposição do desktop */
+  .sidebar-menu {
+    width: 58%;
+    min-width: 220px;
+    max-width: 260px;
+    padding: 16px 16px;
+  }
+
+  .sidebar-content {
+    margin-top: 28px;
+  }
+
+  .sidebar-content ul {
+    gap: 6px;
+  }
+
+  .sidebar-content li {
+    width: 92%;
+    padding-bottom: 8px;
+  }
+
+  .sidebar-content a {
+    font-size: 17px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Formas do drawer: ficam na parte de baixo, longe da lista de links */
+  .shape-left-sidebar {
+    top: auto;
+    bottom: 16%;
+    left: -3%;
+    height: 30%;
+  }
+
+  .shape-yellow-sidebar {
+    bottom: 26%;
+    left: 50%;
+    width: 44%;
+  }
+
+  .shape-flower-sidebar {
+    top: auto;
+    bottom: 9%;
+    right: -22%;
+    width: 50%;
+  }
+
+  .shape-star-sidebar {
+    bottom: 4%;
+    width: 24%;
+  }
+
+  .shape-bottom-sidebar {
+    bottom: -33%;
+  }
+
+  /* No celular o PDF ocupa quase a tela toda e o botão aparece */
+  .PDF {
+    aspect-ratio: auto;
+    height: 70vh;
+    height: 70dvh;
+  }
+
+  .pdf-link {
+    display: block;
+  }
+
+  .footer {
+    padding: 14px 20px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .footer-contact {
+    margin-top: 0;
+  }
+
+  .logo-footer {
+    height: 80px;
+  }
+
+  .footer-bottom {
+    margin: 8px auto 0;
+  }
+
+  .social-link img {
+    height: 28px;
+  }
+}
+
+/* Telas baixas (celular deitado): some a forma amarela para não cobrir os links */
+@media (max-width: 900px) and (max-height: 520px) {
+  .shape-yellow-sidebar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
