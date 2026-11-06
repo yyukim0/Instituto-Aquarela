@@ -17,6 +17,13 @@ img {
   max-width: 100%;
 }
 
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  margin-right: auto;
+  text-decoration: none;
+}
+
 .header {
   display: flex;
   align-items: center;

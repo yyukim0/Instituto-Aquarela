@@ -3,31 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Instituto Aquarela</title>
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-    <header class = "header">
-        <img src="../imagens/logo-header.png" class="image-header">
-        <a class="text-header" href="#">Projetos</a>
+    <header class="header">
+        <a href="index.html" class="logo-link">
+            <img src="../imagens/logo-header.png" class="image-header" alt="Logo Instituto Aquarela">
+        </a>
+        <a class="text-header" href="#projetos">Projetos</a>
         <a class="text-header" href="index.html">Home</a>
-        <a class="text-header" href="#">Sobre nós</a>
+        <a class="text-header" href="#sobre-nos">Sobre nós</a>
         <img src="../imagens/logo-dropdown.png" class="image-dropdown">
     </header>
     <div class="carousel">
         <div class="moviment">
             <img src="../imagens/imagem1.jpg">
-            <img src="../imagens/imagem2.jpeg">
+            <img src="../imagens/imagem2.jpg">
             <img src="../imagens/imagem3.jpg">
         </div>
     </div>
         
-    <section class="projetos-container">
-        <div div-projetos>
+    <section class="projetos-container" id="projetos">
+        <div class="div-projetos">
+            <h2 class="titulo-projeto">Projetos</h2>
             
+            <div class="projetos-lista">
+                <div class="projeto-item">
+                    <img src="../imagens/imagemfoda1.jpg" 
+                         data-title="Oficina de Artes Integradas" 
+                         data-desc="Atividade em grupo focada na expressão artística e acolhimento através de técnicas de aquarela e colagem.">
+                </div>
+                <div class="projeto-item">
+                    <img src="../imagens/imagemfoda2.jpg" 
+                         data-title="Cores do Acolhimento" 
+                         data-desc="Projeto voltado ao fortalecimento de vínculos comunitários e estímulo à criatividade em jovens.">
+                </div>
+                <div class="projeto-item">
+                    <img src="../imagens/imagemfoda3.jpg" 
+                         data-title="Espaço Criativo Infantil" 
+                         data-desc="Desenvolvimento de habilidades manuais e expressão de sentimentos por meio do desenho livre.">
+                </div>
+                <div class="projeto-item">
+                    <img src="../imagens/imagemfoda4.jpg" 
+                         data-title="Mural Coletivo" 
+                         data-desc="Construção conjunta de murais temáticos para embelezar espaços comunitários.">
+                </div>
+                <div class="projeto-item">
+                    <img src="../imagens/imagemfoda5.jpg" 
+                         data-title="Roda de Conversa e Pintura" 
+                         data-desc="Espaço seguro para partilhas afetivas combinadas a exercícios práticos com tinta acrílica.">
+                </div>
+                <div class="projeto-item">
+                    <img src="../imagens/imagemfoda6.jpg" 
+                         data-title="Exposição Aquarela" 
+                         data-desc="Mostra dos trabalhos produzidos pelos participantes ao longo dos ciclos de oficinas.">
+                </div>
+            </div>
         </div>
     </section>
-    <section class="sobre-nos-container">
+
+    <!-- SEÇÃO SOBRE NÓS COM ID -->
+    <section class="sobre-nos-container" id="sobre-nos">
         
         <img src="../imagens/onda-esquerda.png" class="bg-shape shape-left" />
         <img src="../imagens/flor-direita.png" class="bg-shape shape-flower" />
@@ -64,9 +101,8 @@
             <ul>
                 <li class="item-rosa"><a href="https://www.instagram.com/institutoaquarela" target="_blank" rel="noopener noreferrer">SIGA A GENTE</a></li>
                 <li class="item-amarelo"><a href="galeria.html">GALERIA</a></li>
-                <li class="item-verde"><a href="#">SOBRE NÓS</a></li>
-                <li class="item-azul"><a href="#">PROJETOS</a></li>
-                <li class="item-rox o"><a href="#"></a></li>
+                <li class="item-verde"><a href="#sobre-nos">SOBRE NÓS</a></li>
+                <li class="item-azul"><a href="#projetos">PROJETOS</a></li>
             </ul>
         </nav>
     </aside>
@@ -95,6 +131,21 @@
             </div>
         </div>
     </footer>
+
+    <div class="modal" id="imageModal">
+        <div class="modal-box">
+            <div class="modal-img-area">
+                <img class="modal-content" id="modalImg" alt="Imagem ampliada">
+            </div>
+            <aside class="modal-sidebar">
+                <h3 class="modal-title" id="modalTitle">Título do Projeto</h3>
+                <hr class="modal-divider">
+                <div class="modal-info-body">
+                    <p class="modal-description" id="modalDesc">Descrição das atividades desenvolvidas.</p>
+                </div>
+            </aside>
+        </div>
+    </div>
 
     <script src="../js/index.js" defer></script>
 </body>
