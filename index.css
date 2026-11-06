@@ -1,0 +1,766 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Barra de rolagem: trilho transparente, barra laranja */
+  scrollbar-width: thin;
+  scrollbar-color: #f19c03 transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #f19c03;
+  border-radius: 10px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+#projetos,
+#sobre-nos {
+  scroll-margin-top: 100px;
+}
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  margin-right: auto;
+  text-decoration: none;
+}
+
+/* ========================= NAVBAR / HEADER ========================= */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2.5vw, 45px);
+  min-height: 100px;
+  padding: 10px clamp(16px, 4vw, 60px);
+  border: 2px solid #f19c03;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.image-header {
+  width: auto;
+  height: clamp(50px, 7vw, 85px);
+  margin-right: auto;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.image-header:hover {
+  transform: scale(1.1);
+}
+
+.image-dropdown {
+  width: auto;
+  height: clamp(30px, 3.5vw, 42px);
+  margin-left: auto;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.text-header {
+  color: #5971cf;
+  font-size: clamp(0.9rem, 1.3vw, 1.15rem);
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.3s ease;
+  display: inline-block;
+}
+
+.text-header:hover {
+  transform: scale(1.1);
+}
+
+/* ========================= CAROUSEL ========================= */
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: clamp(220px, 42vw, 500px);
+  overflow: hidden;
+}
+
+.moviment {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease-in-out;
+}
+
+.moviment img {
+  width: 100%;
+  height: 100%;
+  flex: 0 0 100%;
+  object-fit: cover;
+}
+
+/* ========================= PROJETOS ========================= */
+
+.projetos-container {
+  background-color: white;
+  width: 100%;
+  padding: clamp(40px, 8vw, 80px) 20px clamp(50px, 10vw, 100px);
+}
+
+.div-projetos {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 40px, 1100px);
+  margin: 0 auto;
+}
+
+.titulo-projeto {
+  color: #9a6b9a;
+  text-align: center;
+  margin: 0 0 clamp(30px, 6vw, 60px) 0;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+}
+
+.projetos-lista {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(20px, 4vw, 40px) clamp(20px, 6vw, 60px);
+  flex-wrap: wrap;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.projeto-item img {
+  /* 140px no celular, até 180px no desktop */
+  width: clamp(130px, 28vw, 180px);
+  height: clamp(130px, 28vw, 180px);
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  display: block;
+}
+
+.projeto-item img:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================= SOBRE NÓS / TEXTOS ========================= */
+
+.sobre-nos-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.end-page {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 40px, 880px);
+  margin: clamp(50px, 8vw, 100px) auto clamp(160px, 25vw, 400px);
+  color: #f19c03;
+}
+
+.end-page h2 {
+  margin: 0 0 20px;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 700;
+}
+
+.end-page p {
+  margin: 0 0 18px;
+  font-size: clamp(1.05rem, 2.2vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.end-page p.propósito {
+  margin-bottom: 0;
+  font-weight: 800;
+}
+
+.marca {
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.cor-vermelha {
+  color: #e14e35;
+}
+.cor-laranja {
+  color: #f19c03;
+}
+.cor-verde {
+  color: #43a047;
+}
+.cor-azul {
+  color: #5971cf;
+}
+.cor-roxa {
+  color: #9a6b9a;
+}
+
+/* Formas decorativas: tamanhos em vw para acompanhar a largura da tela
+   (clamp garante que não fiquem minúsculas no celular nem gigantes em telas grandes) */
+.bg-shape {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.25;
+}
+
+.shape-left {
+  top: calc(-1 * clamp(100px, 21vw, 400px));
+  left: calc(-1 * clamp(20px, 5vw, 100px));
+  height: clamp(500px, 78vw, 1500px);
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.shape-flower {
+  top: -15%;
+  right: calc(-1 * clamp(120px, 23vw, 450px));
+  width: clamp(320px, 47vw, 900px);
+}
+
+.shape-star {
+  bottom: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(90px, 10vw, 200px);
+}
+
+.shape-bottom {
+  bottom: calc(-1 * clamp(300px, 65vw, 1250px));
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+/* ========================= PARTE DO DRAWER / SIDEBAR MENU ========================= */
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 2000;
+}
+
+.menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 25%;
+  min-width: 280px;
+  height: 100vh;
+  height: 100dvh; /* evita o "pulo" da barra de endereço no celular */
+  background-color: white;
+  border: 3px solid #f19c03;
+  border-left: 6px double #f19c03;
+  padding: 20px 24px;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2001;
+  overflow: hidden;
+}
+
+.sidebar-menu.open {
+  transform: translateX(0);
+}
+
+.sidebar-content {
+  position: relative;
+  z-index: 2;
+  margin-top: 40px;
+}
+
+.sidebar-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar-content li {
+  text-align: right;
+  padding-bottom: 15px;
+  border-bottom: 1px solid transparent;
+  width: 80%;
+  margin-left: auto;
+}
+
+.sidebar-content li.item-rosa {
+  border-bottom-color: #f6b5b5;
+}
+.sidebar-content li.item-amarelo {
+  border-bottom-color: #f19c03;
+}
+.sidebar-content li.item-verde {
+  border-bottom-color: #43a047;
+}
+.sidebar-content li.item-azul {
+  border-bottom-color: #5971cf;
+}
+.sidebar-content li.item-roxo {
+  border-bottom-color: #9a6b9a;
+}
+
+.sidebar-content a {
+  display: inline-block;
+  padding: 4px 0; /* área de toque maior */
+  text-decoration: none;
+  color: #f19c03;
+  font-size: clamp(22px, 2vw, 30px);
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: opacity 0.5s ease;
+}
+
+.sidebar-content a:hover {
+  opacity: 0.7;
+}
+
+.shape-left-sidebar {
+  top: 58%;
+  left: -3%;
+  height: 40%;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.shape-flower-sidebar {
+  top: 62%;
+  right: -30%;
+  width: 55%;
+}
+
+.shape-star-sidebar {
+  bottom: 7%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+}
+
+.shape-bottom-sidebar {
+  bottom: -30%;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.shape-yellow-sidebar {
+  bottom: 32%;
+  left: 41%;
+  width: 60%;
+}
+
+/* ========================= MODAL LATERAL DE PROJETOS ========================= */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px);
+  padding: 16px;
+}
+
+.modal.active {
+  display: flex;
+}
+
+/* Caixa: imagem flexível + barra lateral de largura limitada */
+.modal-box {
+  display: flex;
+  background-color: #ffffff;
+  width: min(100%, 1380px);
+  height: min(90vh, 700px);
+  height: min(90dvh, 700px);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+  animation: zoomIn 0.25s ease-out;
+}
+
+.modal-img-area {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  background-color: #121212;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  overflow: hidden;
+}
+
+.modal-content {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-sidebar {
+  flex: 0 0 clamp(300px, 28%, 380px);
+  background-color: #ffffff;
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #f19c03 #f5f5f5;
+}
+
+.modal-title {
+  margin: 0 0 12px;
+  color: #9a6b9a;
+  font-size: 1.8rem;
+  line-height: 1.25;
+}
+
+.modal-divider {
+  border: none;
+  border-top: 1px solid #f0f0f0;
+  margin: 0 0 20px;
+}
+
+.modal-description {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #555555;
+  white-space: pre-line;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Telas estreitas / celular: imagem em cima, texto embaixo */
+@media (max-width: 860px) {
+  .modal-box {
+    flex-direction: column;
+    height: 90vh;
+    height: 90dvh;
+  }
+
+  .modal-img-area {
+    flex: 1 1 55%;
+    width: 100%;
+    min-height: 0;
+  }
+
+  .modal-content {
+    object-fit: contain;
+  }
+
+  .modal-sidebar {
+    flex: 1 1 45%;
+    width: 100%;
+    min-height: 0;
+    padding: 20px;
+  }
+
+  .modal-title {
+    font-size: 1.4rem;
+  }
+}
+
+/* ========================= FOOTER ========================= */
+
+.footer {
+  width: 100%;
+  margin-top: 0;
+  padding: 6px clamp(20px, 4vw, 50px);
+  background-color: #f19c03;
+  color: white;
+}
+
+.footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+  margin: 0;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 0;
+}
+
+.footer-contact p {
+  margin: 0;
+}
+
+.footer-contact .email,
+.footer-contact .address {
+  max-width: none;
+  font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.logo-footer {
+  display: block;
+  width: auto;
+  height: clamp(70px, 8vw, 100px);
+  object-fit: contain;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: -5px auto 0;
+}
+
+.social-icons {
+  display: flex;
+  gap: 14px;
+}
+
+.social-link {
+  display: inline-block;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.social-link img {
+  display: block;
+  width: auto;
+  height: 28px;
+  object-fit: contain;
+}
+
+.social-link:hover {
+  transform: scale(1.15);
+}
+
+/* ========================= RESPONSIVIDADE ========================= */
+
+/* Tablet e celular */
+@media (max-width: 760px) {
+  .header {
+    min-height: 70px;
+    padding: 8px 16px;
+    gap: 12px;
+  }
+
+  /* Os links do topo somem: o menu (drawer) já tem todos eles */
+  .text-header {
+    display: none;
+  }
+
+  .image-header {
+    height: 50px;
+  }
+
+  .image-dropdown {
+    height: 34px;
+  }
+
+  #projetos,
+  #sobre-nos {
+    scroll-margin-top: 80px;
+  }
+
+  /* Drawer no celular: mais estreito e com textos menores,
+     para manter as formas decorativas na mesma disposição do desktop */
+  .sidebar-menu {
+    width: 58%;
+    min-width: 220px;
+    max-width: 260px;
+    padding: 16px 16px;
+  }
+
+  .sidebar-content {
+    margin-top: 28px;
+  }
+
+  .sidebar-content ul {
+    gap: 6px;
+  }
+
+  .sidebar-content li {
+    width: 92%;
+    padding-bottom: 8px;
+  }
+
+  .sidebar-content a {
+    font-size: 17px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Formas do drawer: ficam na parte de baixo, longe da lista de links */
+  .shape-left-sidebar {
+    top: auto;
+    bottom: 16%;
+    left: -3%;
+    height: 30%;
+  }
+
+  .shape-yellow-sidebar {
+    bottom: 26%;
+    left: 50%;
+    width: 44%;
+  }
+
+  .shape-flower-sidebar {
+    top: auto;
+    bottom: 9%;
+    right: -22%;
+    width: 50%;
+  }
+
+  .shape-star-sidebar {
+    bottom: 4%;
+    width: 24%;
+  }
+
+  .shape-bottom-sidebar {
+    bottom: -33%;
+  }
+
+  /* Sobre nós: texto mais legível sobre as formas decorativas */
+  .end-page {
+    color: #f19c03; /* laranja um pouco mais escuro, só no celular */
+  }
+
+  .sobre-nos-container .bg-shape {
+    opacity: 0.15;
+  }
+
+  .shape-flower {
+    width: 240px;
+    right: -90px;
+  }
+
+  /* Projetos: grade de 3 círculos por linha, como no desktop */
+  .projetos-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .div-projetos {
+    width: 100%;
+  }
+
+  .projetos-lista {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 14px;
+    justify-items: center;
+  }
+
+  .projeto-item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .projeto-item img {
+    width: 100%;
+    max-width: 130px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .footer {
+    padding: 14px 20px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .logo-footer {
+    height: 80px;
+  }
+
+  .footer-bottom {
+    margin: 8px auto 0;
+  }
+}
+
+/* Celulares pequenos */
+@media (max-width: 420px) {
+  .carousel {
+    height: 200px;
+  }
+
+  .social-link img {
+    height: 25px;
+  }
+}
+
+/* Telas baixas (celular deitado): some a forma amarela para não cobrir os links */
+@media (max-width: 900px) and (max-height: 520px) {
+  .shape-yellow-sidebar {
+    display: none;
+  }
+}
+
+/* Respeita quem desativou animações no aparelho */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
